@@ -8,5 +8,7 @@ shared:
 jobs:
   hub:
     requires: [ ~commit ]
-  target:
-    requires: [ sd@22674:downstream-a, sd@22674:downstream-b ]
+  target-ss:
+    requires: [ sd@22683:downstream-success1, sd@22683:downstream-success2 ]
+  target-ff:
+    requires: [ sd@22683:downstream-failure1, sd@22683:downstream-failure2 ]
