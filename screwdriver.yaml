@@ -1,0 +1,12 @@
+shared:
+  image: node:18
+  steps:
+    - echo: echo "test"
+  annotations:
+    screwdriver.cd/virtualJob: true
+
+jobs:
+  hub:
+    requires: [ ~commit ]
+  target:
+    requires: [ sd@15553:downstream-a, sd@15553:downstream-b ]
