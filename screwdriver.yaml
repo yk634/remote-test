@@ -10,7 +10,7 @@ parameters:
 
 jobs:
   downstream-hub:
-    requires: [ ~sd@15553:hub ]
+    requires: [ ~sd@15552:hub ]
   downstream-a:
     requires: [ ~downstream-hub ]
   downstream-b:
