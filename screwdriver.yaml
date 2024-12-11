@@ -9,4 +9,4 @@ jobs:
   hub:
     requires: [ ~commit ]
   target:
-    requires: [ sd@15553:downstream-a, sd@15553:downstream-b ]
+    requires: [ sd@22674:downstream-a, sd@22674:downstream-b ]
