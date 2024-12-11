@@ -7,7 +7,7 @@ shared:
 
 jobs:
   downstream-hub:
-    requires: [ ~sd@15552:hub ]
+    requires: [ ~sd@22673:hub ]
   downstream-a:
     requires: [ ~downstream-hub ]
   downstream-b:
