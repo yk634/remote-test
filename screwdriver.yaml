@@ -11,22 +11,22 @@ jobs:
     requires: [ ~sd@22684:hub ]
     annotations:
       screwdriver.cd/virtualJob: true
-  downstream-a:
+  downstream-success1:
     requires: [ ~downstream-hub ]
     annotations:
       screwdriver.cd/virtualJob: true
-  downstream-b:
+  downstream-success2:
     requires: [ ~downstream-hub ]
     annotations:
       screwdriver.cd/virtualJob: true
-  downstream-a:
+  downstream-failure1:
     requires: [ ~downstream-hub ]
     steps:
       - metadata: |
           if [ "$(meta get parameters.success.value)" != 'true' ]; then
             exit 1
           fi
-  downstream-b:
+  downstream-failure2:
     requires: [ ~downstream-hub ]
     steps:
       - metadata: |
