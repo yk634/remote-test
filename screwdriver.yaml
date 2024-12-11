@@ -2,11 +2,34 @@ shared:
   image: node:18
   steps:
     - echo: echo "test"
-  annotations:
-    screwdriver.cd/virtualJob: true
+
+parameters:
+  success: [' ', 'true', 'false']
 
 jobs:
-  hub:
-    requires: [ ~commit ]
-  target:
-    requires: [ sd@22674:downstream-a, sd@22674:downstream-b ]
+  downstream-hub:
+    requires: [ ~sd@22684:hub ]
+    annotations:
+      screwdriver.cd/virtualJob: true
+  downstream-a:
+    requires: [ ~downstream-hub ]
+    annotations:
+      screwdriver.cd/virtualJob: true
+  downstream-b:
+    requires: [ ~downstream-hub ]
+    annotations:
+      screwdriver.cd/virtualJob: true
+  downstream-a:
+    requires: [ ~downstream-hub ]
+    steps:
+      - metadata: |
+          if [ "$(meta get parameters.success.value)" != 'true' ]; then
+            exit 1
+          fi
+  downstream-b:
+    requires: [ ~downstream-hub ]
+    steps:
+      - metadata: |
+          if [ "$(meta get parameters.success.value)" != 'true' ]; then
+            exit 1
+          fi
