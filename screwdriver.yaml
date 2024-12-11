@@ -5,9 +5,6 @@ shared:
   annotations:
     screwdriver.cd/virtualJob: true
 
-parameters:
-  success: [' ', 'true', 'false']
-
 jobs:
   downstream-hub:
     requires: [ ~sd@15552:hub ]
