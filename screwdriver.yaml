@@ -1,0 +1,17 @@
+shared:
+  image: node:18
+  steps:
+    - echo: echo "test"
+  annotations:
+    screwdriver.cd/virtualJob: true
+
+parameters:
+  success: [' ', 'true', 'false']
+
+jobs:
+  downstream-hub:
+    requires: [ ~sd@15553:hub ]
+  downstream-a:
+    requires: [ ~downstream-hub ]
+  downstream-b:
+    requires: [ ~downstream-hub ]
